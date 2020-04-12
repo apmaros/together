@@ -1,5 +1,8 @@
 # Together API
 
+## Usage
+- start API `make run`
+
 ## Add requirements
 Be considerate of the requirements pulled to the project. Each of them requires
  maintenance and cost.

@@ -16,4 +16,3 @@ if __name__ == '__main__':
     server = Server()
     server.start(config, set_routes(api))
     logger.info("started Together API")
-
