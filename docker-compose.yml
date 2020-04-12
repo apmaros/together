@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+#  placeholder for app
+#  web:
+#    build: .
+#    ports:
+#    - "5000:5000"
+#    volumes:
+#    - .:/code
+#    - logvolume01:/var/log
+#    links:
+#    - redis
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - "./data/postges:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+
+volumes:
+  logvolume01: {}
