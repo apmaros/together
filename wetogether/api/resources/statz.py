@@ -3,8 +3,7 @@ import falcon
 
 
 class Statz(object):
-
-    def on_get(self, req, resp):
+    def on_get(self, _, resp):
         doc = {
             'version': "0.0.1",
         }

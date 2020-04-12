@@ -22,7 +22,7 @@ def get_db_config():
     )
 
 
-def get_url(config: DbConfig):
+def get_db_url(config: DbConfig = DbConfig()):
     return "postgresql://{}:{}@{}:{}/{}".format(
         config.username,
         config.password,

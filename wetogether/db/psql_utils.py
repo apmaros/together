@@ -1,6 +1,6 @@
 import psycopg2
 
-from wetogether.db import DbConfig
+from config.db_config import DbConfig
 
 
 def psql_connect(config: DbConfig):

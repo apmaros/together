@@ -1,6 +1,5 @@
 import falcon
 from falcon import API
-
 from api.resources.statz import Statz
 
 

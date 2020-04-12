@@ -1,3 +1,4 @@
+import os
 import string
 from dataclasses import dataclass
 
@@ -9,4 +10,7 @@ class ServerConfig:
 
 
 def get_server_config() -> ServerConfig:
-    return ServerConfig()
+    return ServerConfig(
+        os.environ["API_HOST"],
+        os.environ["API_PORT"]
+    )
