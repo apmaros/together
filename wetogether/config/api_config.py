@@ -12,5 +12,5 @@ class ServerConfig:
 def get_server_config() -> ServerConfig:
     return ServerConfig(
         os.environ["API_HOST"],
-        os.environ["API_PORT"]
+        int(os.environ["API_PORT"])
     )

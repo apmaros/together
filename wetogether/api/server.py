@@ -1,7 +1,20 @@
 import logging
 from wsgiref import simple_server
-
+from falcon import API
 from config.api_config import ServerConfig
+from api.middleware.json_translator import JSONTranslator
+from api.middleware.require_json import RequireJSON
+
+
+def get_api() -> API:
+    api = API(
+        middleware=[
+            RequireJSON(),
+            JSONTranslator(),
+        ]
+    )
+    api.req_options.auto_parse_form_urlencoded = True
+    return api
 
 
 class Server:

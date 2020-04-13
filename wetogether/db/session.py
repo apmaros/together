@@ -14,4 +14,5 @@ def get_session(config: DbConfig):
 
     url = get_db_url(config)
     engine = create_engine(url, echo=True, pool_size=10)
-    return sessionmaker(bind=engine)
+    Session = sessionmaker(bind=engine)
+    return Session()
