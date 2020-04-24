@@ -20,8 +20,8 @@ class UserResource(object):
     def on_post(self, req, resp):
         username = req.context.doc.get('username')
         email = req.context.doc.get('email')
-        firstname = req.context.doc.get('firstname') or ''
-        lastname = req.context.doc.get('lastname') or ''
+        firstname = req.context.doc.get('firstname')
+        lastname = req.context.doc.get('lastname')
 
         if username is None or email is None:
             resp.status = falcon.HTTP_400

@@ -5,8 +5,7 @@
 - start API `make run`
 
 ### Migrations
-Manipulating DB is via Alembic migrations (read [tutorial](https://alembic.sqlalchemy
-.org/en/latest/tutorial.html) to learn more)
+Manipulating DB is via Alembic migrations (read [tutorial](https://alembic.sqlalchemy.org/en/latest/tutorial.html) to learn more)
 
 Database connection is using environment variables to set the URL. See configuration
  section
@@ -15,7 +14,7 @@ Database connection is using environment variables to set the URL. See configura
 ## Configuration
 Application is using environment variables for all configuration where it can be used.
 
-| name | default |description |
+| name | dev |description |
 | ------------- |:-------------:| -----:|
 | DB_USERNAME   |  |  |
 | DB_HOST       |  |  |
