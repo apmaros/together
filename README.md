@@ -1,3 +1,5 @@
+![Docker Image CI](https://github.com/apmaros/together/workflows/Docker%20Image%20CI/badge.svg)
+
 # Together API
 
 ## Usage (development)
