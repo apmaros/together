@@ -11,10 +11,21 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    - name: Deploy to swarm
+
+    steps:
+    - name: check repo
+      uses: actions/checkout@v2
+    - name: Build and push Docker images
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        name: apmaros/together
+        tag: tests
+    - name: deploy to swarm
       uses: sagebind/docker-swarm-deploy-action@v2
       with:
-        remote_host: ${{ secrets.DOCKER_HOST }}
+        remote_host: ${{ secrets.DOCKER_SWARM_HOST }}
         ssh_private_key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
         ssh_public_key: ${{ secrets.DOCKER_SSH_PUBLIC_KEY }}
-        args: stack deploy --compose-file docker-compose.yml together
+        args: stack deploy --compose-file stack.yml together
