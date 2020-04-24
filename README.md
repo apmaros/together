@@ -1,6 +1,9 @@
 # Together API
 
 ## Usage (development)
+- reset env
+    - `rm -rf ./venv; virtualenv venv; source ./venv/bin/activate; pip install
+ -r requirements.txt`
 - setup environment `source ./bin/init_dev`
 - start API `make run`
 
