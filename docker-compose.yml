@@ -1,18 +1,22 @@
 version: '3.1'
 
 services:
-#  placeholder for app
-#  web:
-#    build: .
-#    ports:
-#    - "5000:5000"
-#    volumes:
-#    - .:/code
-#    - logvolume01:/var/log
-#    links:
-#    - redis
+  webapp:
+    build:
+      context: .
+    networks:
+      - backend
+    ports:
+        - "4000:4000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+    container_name: together-api
   db:
     image: postgres
+    networks:
+      - backend
     restart: always
     environment:
       POSTGRES_PASSWORD: password
@@ -23,3 +27,6 @@ services:
 
 volumes:
   logvolume01: {}
+
+networks:
+  backend:
