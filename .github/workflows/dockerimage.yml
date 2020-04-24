@@ -11,11 +11,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag together:$(date +%s)
     - name: Deploy to swarm
       uses: sagebind/docker-swarm-deploy-action@v2
       with:
