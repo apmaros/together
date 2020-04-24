@@ -31,9 +31,9 @@ Application is using environment variables for all configuration where it can be
 Be considerate of the dependency libraries pulled to the project. Each of them requires
  maintenance and cost.
 
-0. make sure you are under virtualenv environment
-0. install locally `pip install [my-lib]`
-0. freeze library to requirements `pip freeze -l > requirements.txt` 
+1. make sure you are under virtualenv environment
+1. install locally `pip install [my-lib]`
+1. freeze library to requirements `pip freeze -l > requirements.txt` 
 
 ## Docker Debug
 Based docker image is minimal linux distribution to minimize the size and build time.
