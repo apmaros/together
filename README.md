@@ -15,7 +15,6 @@ Manipulating DB is via Alembic migrations (read [tutorial](https://alembic.sqlal
 Database connection is using environment variables to set the URL. See configuration
  section
 
-
 ## Configuration
 Application is using environment variables for all configuration where it can be used.
 
