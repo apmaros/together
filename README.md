@@ -1,4 +1,4 @@
-![Docker Image CI](https://github.com/apmaros/together/workflows/Docker%20Image%20CI/badge.svg)
+![build and deploy](https://github.com/apmaros/together/workflows/build%20and%20deploy/badge.svg?branch=master)
 
 # Together API
 
