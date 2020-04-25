@@ -5,17 +5,15 @@ services:
     image: apmaros/together:latest
     networks:
         - outside
-    ports:
-      - "4000:4000"
     deploy:
-      mode: global
-    restart_policy:
-      condition: on-failure
-      delay: 5s
-      max_attempts: 3
-      window: 120s
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
 
-    networks:
-      outside:
-        external:
-          name: "host"
+networks:
+  outside:
+    external:
+      name: "host"
