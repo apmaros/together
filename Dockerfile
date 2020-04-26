@@ -16,4 +16,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 # expose API port
 EXPOSE 4000
 
-CMD [ "/bin/bash", "./bin/run_dev.sh" ]
+CMD [ "/bin/bash", "./bin/run_app.sh" ]
