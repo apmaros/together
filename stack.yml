@@ -5,13 +5,25 @@ services:
     image: apmaros/together:latest
     networks:
         - outside
+    environment:
+        DB_USERNAME_FILE: '/run/secrets/db_username'
+        DB_PASSWORD_FILE: '/run/secrets/db_password'
+    secrets:
+        - db_username
+        - db_password
     deploy:
-      replicas: 3
+      replicas: 1
       restart_policy:
         condition: on-failure
         delay: 5s
         max_attempts: 3
         window: 120s
+
+secrets:
+  db_username:
+    external: true
+  db_password:
+    external: true
 
 networks:
   outside:
