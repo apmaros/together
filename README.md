@@ -3,14 +3,44 @@
 # Together API
 
 ## Usage (development)
-- reset env
-    - `rm -rf ./venv; virtualenv venv; source ./venv/bin/activate; pip install
- -r requirements.txt`
-- setup environment `source ./bin/init_dev`
-- start API `make run`
+There are number of ways to run the application:
+
+1. **run application manually:**<br>
+  This option gives more control over application settings. It is required that
+   database is listening on default port (see Configuration)
+  ```shell script
+  # install evironment
+  $ source ./bin/install_venv.sh
+  # run application
+  $ ./bin/run_app.sh
+  ```
+
+2. **run docker compose:**<br>
+  Run application bundled and configured with database
+
+  ```shell script
+  $ docker-compose up -d
+  ```
+
+  useful commands to inspect and manage docker-compose:
+  ```shell script
+    # see logs
+    $ docker-compose logs -f api
+    # build image
+    $ docker-compose build api
+    # stop container (or use kill)
+    $ docker-compose stop
+  ```
 
 ### Migrations
-Manipulating DB is via Alembic migrations (read [tutorial](https://alembic.sqlalchemy.org/en/latest/tutorial.html) to learn more)
+Database migrations are handled by Alembic (read [tutorial](https://alembic.sqlalchemy.org/en/latest/tutorial.html) to learn more)
+
+Migration is triggered on each application run, or can be manually triggered. It is
+ required that the virtual env and environment is configured (See Usage)
+
+```shell script
+make migrate
+```  
 
 Database connection is using environment variables to set the URL. See configuration
  section
@@ -33,7 +63,7 @@ Be considerate of the dependency libraries pulled to the project. Each of them r
  maintenance and cost.
 
 1. make sure you are under virtualenv environment
-1. install locally `pip install [my-lib]`
+1. install locally `pip install <my-lib>`
 1. freeze library to requirements `pip freeze -l > requirements.txt` 
 
 ## Docker Debug
@@ -51,7 +81,7 @@ docker run --rm -it --pid=container:node_app_alpine --net=container:node_app_alp
 **debug**
   - inspect processees `ps`
   - inspect network `netstat -ltnp`
-  - access target container file system `/proc/[target-pid]/root`
+  - access target container file system `/proc/<target-pi>/root`
     - e.g. `ls /proc/1/root/usr/src/app/`
 
 ## Contribute Guide

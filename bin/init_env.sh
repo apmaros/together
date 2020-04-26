@@ -1,8 +1,12 @@
 #!/bin/bash
 
+## Initialize environment and injects secrets
+
 DAFAULT_DB_HOST='0.0.0.0';
 DEFAULT_DB_USER='postgres';
 DEFAULT_DB_PASS='password'
+
+echo "`date` Initializing application environment"
 
 # set db host
 if [ -z ${DB_HOST+x} ];
