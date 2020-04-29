@@ -14,8 +14,11 @@ Requirements:
   - Docker Engine - v19+
 
 ## CI/CD Pipeline
-Once application is dockerize, next step is to setup a continues integration server that will build the image at the the right time. Typically, on each PR tests and static analysis is done to ensure code quality. On pushing to `master` branch is code packaged, published and deployed.
-As this project is focusing on being lightweight, we will attempt to use [Github Action](https://github.com/features/actions), which promises to _"make it easy to automate all software workflows"_
+Once application is dockerised, next step is to setup a continues integration server
+ that will build the image at the the right time. Typically, on each PR tests and static analysis is done to ensure code quality. 
+ On pushing to `master` branch is code packaged, published and deployed. As this
+  project is focusing on being lightweight, we will attempt to use [Github Action](https://github.com/features/actions), 
+  which promises to _"make it easy to automate all software workflows"_
 
 ## Workflow
 Workflow is automatize process that will carry on our build. It is configured in `steps`. Steps can be either preconfigured commonly used steps, or manual commands. Because we are using commonly used tools, all the steps will be already defined by community. 
@@ -25,11 +28,13 @@ This sections describes key points of typical workflow. More information can be 
 
 ```
 on:
-  release:
-    types: [published]
+  push:
+    branches: [ master ]
 ```
 
-Workflow trigger is defined by activity on Github. It closely follows git events such as `pull_request`, `push`, or `release`. This case sets up `release` to be trigger the build to have better control over deployment. However, it is common practice to deploy upon push to master.
+Workflow trigger is defined by activity on Github. It closely follows git events such
+ as `pull_request`, `push`, or `release`. In this case when a commit is pushed to
+  master build is triggered.
 
 **Checkout Repository**<br>
 
