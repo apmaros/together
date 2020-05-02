@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, TIMESTAMP
 from sqlalchemy.dialects.postgresql import UUID
 
 from model.base import Base
@@ -20,6 +20,9 @@ class User(Base):
     email = Column(String)
     first_name = Column(String)
     last_name = Column(String)
+    password = Column(String)
+    created_at = Column(TIMESTAMP)
+    last_access_at = Column(TIMESTAMP)
 
     def __repr__(self):
         return "<User(name='%s', fullname='%s', nickname='%s')>" % (

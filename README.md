@@ -42,6 +42,16 @@ Migration is triggered on each application run, or can be manually triggered. It
 make migrate
 ```  
 
+**Author Migration***
+New migration is created adding a python file into `./wetogether/api/db/migration
+/versions`.
+
+This **should not** be done manually, but by using CLI command:
+
+```shell script
+alembic revision -m '<name of the migration>'
+```
+
 Database connection is using environment variables to set the URL. See configuration
  section
 
