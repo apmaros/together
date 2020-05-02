@@ -42,7 +42,7 @@ Migration is triggered on each application run, or can be manually triggered. It
 make migrate
 ```  
 
-**Author Migration***
+**Author Migration**<br>
 New migration is created adding a python file into `./wetogether/api/db/migration
 /versions`.
 

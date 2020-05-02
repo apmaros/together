@@ -3,6 +3,7 @@ import logging
 
 import falcon
 
+from api.security import encrypt
 from model.user import User
 
 
@@ -22,6 +23,7 @@ class UserResource(object):
         email = req.context.doc.get('email')
         firstname = req.context.doc.get('firstname')
         lastname = req.context.doc.get('lastname')
+        password_hash = encrypt(req.context.doc.get('password'))
 
         if username is None or email is None:
             resp.status = falcon.HTTP_400
@@ -33,7 +35,8 @@ class UserResource(object):
             username=username,
             email=email,
             first_name=firstname,
-            last_name=lastname
+            last_name=lastname,
+            password=password_hash
         )
 
         self.db.add(user)
