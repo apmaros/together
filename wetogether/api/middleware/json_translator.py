@@ -28,6 +28,7 @@ class JSONTranslator(object):
                                    'JSON was incorrect or not encoded as '
                                    'UTF-8.')
 
+
     def process_response(self, req, resp, resource, _):
         if not hasattr(resp.context, 'result'):
             return

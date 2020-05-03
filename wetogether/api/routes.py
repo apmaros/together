@@ -6,7 +6,6 @@ from api.resources.statz import Statz
 from api.resources.user_resource import UserResource
 
 
-
 def set_routes(api: API, db: Session) -> API:
     user = UserResource(db)
     api.add_route('/statz', Statz())

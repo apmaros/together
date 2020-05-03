@@ -1,5 +1,4 @@
 import logging
-import string
 from datetime import datetime, timedelta
 
 import falcon
@@ -40,6 +39,9 @@ class LoginResource(object):
                     self.jwt_config.algorithm
                 )
                 resp.body = json.dumps({'token': jwt_token.decode('utf-8')})
+            else:
+                set_invalid_credentials(resp)
+
 
         except NoResultFound:
             self.logger.debug('user not found')
