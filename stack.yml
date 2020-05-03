@@ -8,9 +8,11 @@ services:
     environment:
         DB_USERNAME_FILE: '/run/secrets/db_username'
         DB_PASSWORD_FILE: '/run/secrets/db_password'
+        JWT_SECRET_FILE: '/run/secrets/jwt_secret'
     secrets:
         - db_username
         - db_password
+        - jwt_secret
     deploy:
       replicas: 1
       restart_policy:
@@ -23,6 +25,8 @@ secrets:
   db_username:
     external: true
   db_password:
+    external: true
+  jwt_secret:
     external: true
 
 networks:

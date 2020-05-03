@@ -3,6 +3,7 @@ import logging
 
 import falcon
 from sqlalchemy import func
+from sqlalchemy.orm import Session
 
 from api.security import encrypt
 from model.user import User
@@ -24,12 +25,13 @@ class UserResource(object):
         email = req.context.doc.get('email')
         firstname = req.context.doc.get('firstname')
         lastname = req.context.doc.get('lastname')
-        password_hash = encrypt(req.context.doc.get('password'))
+        password = req.context.doc.get('password')
         created_at = func.now()
 
-        if username is None or email is None:
-            resp.status = falcon.HTTP_400
-            resp.body = json.dumps({'error': 'missing values'})
+        if username is None or email is None or password is None:
+            resp.body = json.dumps(
+                {'error': 'One or more required values are missing'}
+            )
             resp.status = falcon.HTTP_401
             return
 
@@ -38,7 +40,7 @@ class UserResource(object):
             email=email,
             first_name=firstname,
             last_name=lastname,
-            password=password_hash,
+            password=encrypt(password),
             created_at=created_at,
             last_access_at=None
         )
@@ -47,5 +49,5 @@ class UserResource(object):
         self.db.commit()
         resp.status = falcon.HTTP_200
 
-    def __init__(self, db):
+    def __init__(self, db: Session):
         self.db = db

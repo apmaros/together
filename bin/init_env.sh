@@ -31,9 +31,25 @@ if ! [ -z ${DB_PASSWORD_FILE+x} ];
 then
   DB_PASSWORD_PARAM=$(cat ${DB_PASSWORD_FILE});
 else
-  echo "password: secret not found, falling back to default <******>"
+  echo "password: secret not found, falling back to default"
   DB_PASSWORD_PARAM=${DEFAULT_DB_PASS}
 fi
+
+# set jwt secret
+if [ -z ${JWT_SECRET+x} ];
+then
+    if ! [ -z ${JWT_SECRET_FILE+x} ];
+  then
+    JWT_SECRET_PARAM=$(cat ${JWT_SECRET_FILE});
+  else
+    echo "JWT Secret not found. Application will terminate!"
+    exit 1
+  fi
+else
+  echo "JWT secret already set"
+  JWT_SECRET_PARAM=${JWT_SECRET};
+fi
+
 
 echo "configuring dev env"
 export DB_USERNAME=${DB_USERNAME_PARAM}
@@ -46,3 +62,6 @@ echo '  √ database configured'
 export API_HOST='0.0.0.0'
 export API_PORT=4000
 echo "  √ API configured"
+
+export JWT_SECRET=$JWT_SECRET_PARAM
+echo "  √ JWT configured"
