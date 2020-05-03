@@ -5,6 +5,7 @@ import falcon
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
+from api.resources.util import get_param
 from api.security import encrypt
 from model.user import User
 
@@ -21,12 +22,11 @@ class UserResource(object):
 
 
     def on_post(self, req, resp):
-        username = req.context.doc.get('username')
-        email = req.context.doc.get('email')
-        firstname = req.context.doc.get('firstname')
-        lastname = req.context.doc.get('lastname')
-        password = req.context.doc.get('password')
-        created_at = func.now()
+        username = get_param(req, 'username')
+        email = get_param(req, 'email')
+        firstname = get_param(req, 'firstname')
+        lastname = get_param(req, 'lastname')
+        password = get_param(req, 'password')
 
         if username is None or email is None or password is None:
             resp.body = json.dumps(
@@ -41,7 +41,7 @@ class UserResource(object):
             first_name=firstname,
             last_name=lastname,
             password=encrypt(password),
-            created_at=created_at,
+            created_at=func.now(),
             last_access_at=None
         )
 

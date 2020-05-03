@@ -7,6 +7,8 @@ from falcon import json
 import jwt
 from sqlalchemy.orm import Session
 from sqlalchemy.orm.exc import NoResultFound
+
+from api.resources.util import get_param
 from api.security import verify_secret
 from config.jwt_config import JwtConfig, jwt_config
 from model.user import User
@@ -49,11 +51,6 @@ class LoginResource(object):
     def __init__(self, db: Session):
         self.jwt_config = jwt_config
         self.db: Session = db
-
-
-def get_param(req, param: string):
-    return req.context.doc.get(param) \
-        if param in req.context.doc else None
 
 
 def set_invalid_credentials(resp):
