@@ -33,4 +33,4 @@ class JSONTranslator(object):
         if not hasattr(resp.context, 'result'):
             return
 
-        resp.body = json.dumps(resp.context.result)
+        resp.body = json.dumps(resp.body)

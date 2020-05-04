@@ -16,6 +16,10 @@ from model.user import User
 class LoginResource(object):
     logger = logging.getLogger(__name__)
 
+    auth = {
+        'exempt_methods': ['POST']
+    }
+
     def on_post(self, req, resp):
         email = get_param(req, 'email')
         password = get_param(req, 'password')

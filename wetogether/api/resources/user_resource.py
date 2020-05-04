@@ -13,11 +13,11 @@ from model.user import User
 class UserResource(object):
     logger = logging.getLogger(__name__)
 
-    def on_get(self, req, resp, user_id=None):
-        if user_id is None:
-            resp.status = falcon.HTTP_400
-            return
+    auth = {
+        'exempt_methods': ['POST']
+    }
 
+    def on_get(self, req, resp):
         resp.status = falcon.HTTP_200
 
 

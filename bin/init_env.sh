@@ -43,7 +43,8 @@ then
     JWT_SECRET_PARAM=$(cat ${JWT_SECRET_FILE});
   else
     echo "JWT Secret not found. Application will terminate!"
-    exit 1
+    # exit would quit terminal
+    return
   fi
 else
   echo "JWT secret already set"

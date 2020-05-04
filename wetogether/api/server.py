@@ -6,17 +6,6 @@ from api.middleware.json_translator import JSONTranslator
 from api.middleware.require_json import RequireJSON
 
 
-def get_api() -> API:
-    api = API(
-        middleware=[
-            RequireJSON(),
-            JSONTranslator(),
-        ]
-    )
-    api.req_options.auto_parse_form_urlencoded = True
-    return api
-
-
 class Server:
     logger = logging.getLogger(__name__)
     server = simple_server
