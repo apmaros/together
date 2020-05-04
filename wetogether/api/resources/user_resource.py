@@ -18,6 +18,14 @@ class UserResource(object):
     }
 
     def on_get(self, req, resp):
+        user = req.context['user'].pop()
+        logging.info(f'user={user}')
+
+        resp.body = json.dumps({
+            'id': str(user.id),
+            'email': user.email,
+            'created_at': user.created_at.timestamp(),
+        })
         resp.status = falcon.HTTP_200
 
 

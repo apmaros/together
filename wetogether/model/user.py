@@ -25,8 +25,7 @@ class User(Base):
     last_access_at = Column(TIMESTAMP)
 
     def __repr__(self):
-        return "<User(name='%s', fullname='%s', nickname='%s')>" % (
-            self.name,
-            self.fullname,
-            self.nickname
+        return "<User(username='%s', email='%s')>" % (
+            self.username,
+            self.email
         )

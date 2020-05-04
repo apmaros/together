@@ -4,6 +4,11 @@ import falcon
 
 class Statz(object):
     def on_get(self, _, resp):
+
+        auth = {
+            'exempt_methods': ['POST']
+        }
+
         doc = {
             'version': "0.0.2",
         }
