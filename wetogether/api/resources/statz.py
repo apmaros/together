@@ -1,13 +1,13 @@
 import json
 import os
 import string
-
 import falcon
+
 
 def get_version() -> string:
     version = 'UNKNOWN'
-    if 'BUILD_VERSION' in os.environ:
-        version = os.environ['BUILD_VERSION']
+    if 'APP_VERSION' in os.environ:
+        version = os.environ['APP_VERSION']
 
     return version
 
