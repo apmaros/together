@@ -13,7 +13,7 @@ jobs:
     - name: build and push docker image
       uses: elgohr/Publish-Docker-Github-Action@master
       env:
-        BUILD_VERSION: ${GITHUB_SHA::8}
+        BUILD_VERSION: "0.0.3"
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
