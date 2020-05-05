@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy.orm.exc import NoResultFound
 
 from api.resources.util import get_param
-from api.security import verify_secret
+from api.security import secret_is_valid
 from config.jwt_config import JwtConfig, jwt_config
 from model.user import User
 
@@ -30,7 +30,7 @@ class LoginResource(object):
             return
         try:
             user = self.db.query(User).filter(User.email == email).one()
-            if verify_secret(password, user.password):
+            if secret_is_valid(password, user.password):
                 payload = {
                     'user_id': str(user.id),
                     'exp': datetime.utcnow() + timedelta(

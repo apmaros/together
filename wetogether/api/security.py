@@ -7,9 +7,9 @@ pwd_context = CryptContext(
 )
 
 
-def encrypt(password):
-    return pwd_context.encrypt(password)
+def encrypt(secret):
+    return pwd_context.encrypt(secret)
 
 
-def verify_secret(password, hashed) -> bool:
-    return pwd_context.verify(password, hashed)
+def secret_is_valid(secret, hashed) -> bool:
+    return pwd_context.verify(secret, hashed)
