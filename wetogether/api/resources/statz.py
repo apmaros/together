@@ -20,7 +20,8 @@ class Statz(object):
 
     def on_get(self, _, resp):
         doc = {
-            'version': get_version(),
+            'name': 'my_application',
+            'version': get_version()
         }
 
         resp.body = json.dumps(doc, ensure_ascii=False)
