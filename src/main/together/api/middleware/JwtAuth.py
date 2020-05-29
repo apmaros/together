@@ -1,6 +1,5 @@
 from sqlalchemy.orm import Session
 from falcon_auth import JWTAuthBackend
-
 from config.jwt_config import JwtConfig
 from model.user import User
 
@@ -21,5 +20,6 @@ class JwtAuth(object):
         }
 
     def __init__(self, config: JwtConfig, db: Session):
+        print(config)
         self.db = db
         self.config = config

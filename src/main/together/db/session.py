@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import Session
+import logging
 
 from config.db_config import DbConfig, get_db_url
-import logging
 
 logger = logging.getLogger(__name__)
 

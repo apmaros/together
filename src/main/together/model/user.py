@@ -1,8 +1,6 @@
 import uuid
-
 from sqlalchemy import Column, String, TIMESTAMP
 from sqlalchemy.dialects.postgresql import UUID
-
 from model.base import Base
 
 

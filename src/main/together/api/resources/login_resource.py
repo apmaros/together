@@ -1,15 +1,13 @@
 import logging
 from datetime import datetime, timedelta
-
 import falcon
 from falcon import json
 import jwt
 from sqlalchemy.orm import Session
 from sqlalchemy.orm.exc import NoResultFound
-
 from api.resources.util import get_param
 from api.security import secret_is_valid
-from config.jwt_config import JwtConfig, jwt_config
+from config.jwt_config import default_jwt_config
 from model.user import User
 
 
@@ -55,7 +53,7 @@ class LoginResource(object):
             set_invalid_credentials(resp)
 
     def __init__(self, db: Session):
-        self.jwt_config = jwt_config
+        self.jwt_config = default_jwt_config
         self.db: Session = db
 
 

@@ -1,12 +1,11 @@
 from falcon import API
 from falcon_auth import FalconAuthMiddleware
 from sqlalchemy.orm import Session
-
 from api.middleware.JwtAuth import JwtAuth
 from api.middleware.json_translator import JSONTranslator
 from api.middleware.require_json import RequireJSON
 from api.routes import set_routes
-from config.jwt_config import jwt_config
+from config.jwt_config import default_jwt_config
 
 
 def get_api(db: Session) -> API:
@@ -20,7 +19,7 @@ def __build_api(db: Session) -> API:
             RequireJSON(),
             JSONTranslator(),
             FalconAuthMiddleware(
-                JwtAuth(jwt_config, db).get_backend(),
+                JwtAuth(default_jwt_config, db).get_backend(),
                 [],
                 ['HEAD']
             )

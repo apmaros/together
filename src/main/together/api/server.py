@@ -1,9 +1,6 @@
 import logging
 from wsgiref import simple_server
-from falcon import API
 from config.api_config import ServerConfig
-from api.middleware.json_translator import JSONTranslator
-from api.middleware.require_json import RequireJSON
 
 
 class Server:

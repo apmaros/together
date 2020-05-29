@@ -1,10 +1,8 @@
 import json
 import logging
-
 import falcon
 from sqlalchemy import func
 from sqlalchemy.orm import Session
-
 from api.resources.util import get_param
 from api.security import encrypt
 from model.user import User

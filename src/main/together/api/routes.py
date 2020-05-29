@@ -1,6 +1,5 @@
 from falcon import API
 from sqlalchemy.orm import Session
-
 from api.resources.login_resource import LoginResource
 from api.resources.statz import Statz
 from api.resources.user_resource import UserResource
