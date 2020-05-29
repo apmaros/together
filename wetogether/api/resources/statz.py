@@ -20,7 +20,7 @@ class Statz(object):
 
     def on_get(self, _, resp):
         doc = {
-            'name': 'my_application',
+            'name': 'together',
             'version': get_version()
         }
 
