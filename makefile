@@ -4,3 +4,5 @@ run:
 	python ./src/main/together/app.py
 migrate:
 	./bin/migrate_db.sh
+test:
+    ./bin/test.sh
