@@ -5,4 +5,5 @@ run:
 migrate:
 	./bin/migrate_db.sh
 test:
-    ./bin/test.sh
+	./bin/run_tests.sh
+
