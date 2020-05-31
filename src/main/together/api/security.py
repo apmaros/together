@@ -1,3 +1,5 @@
+import string
+
 from passlib.context import CryptContext
 
 pwd_context = CryptContext(
@@ -7,8 +9,8 @@ pwd_context = CryptContext(
 )
 
 
-def encrypt(secret):
-    return pwd_context.encrypt(secret)
+def hash(secret) -> string :
+    return pwd_context.hash(secret)
 
 
 def secret_is_valid(secret, hashed) -> bool:

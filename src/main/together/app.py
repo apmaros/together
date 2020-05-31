@@ -14,8 +14,8 @@ logging.basicConfig(format='%(asctime)-15s %(message)s')
 def run():
     logger.info("starting Together API")
     db_session = get_session(DbConfig())
-    api = get_api(db_session)
     config = get_server_config()
+    api = get_api(db_session)
     Server().start(config, api)
     logger.info("started Together API")
 

@@ -4,7 +4,7 @@ import falcon
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 from api.resources.util import get_param
-from api.security import encrypt
+from api.security import hash
 from db.data_access.user import save_user
 from model.user import User
 
@@ -47,7 +47,7 @@ class UserResource(object):
             email=email,
             first_name=firstname,
             last_name=lastname,
-            password=encrypt(password),
+            password=hash(password),
             created_at=func.now(),
             last_access_at=None
         )
