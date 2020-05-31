@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from falcon_auth import JWTAuthBackend
 from config.jwt_config import JwtConfig
-from model.user import User
+from db.data_access.user import get_user_by_id
 
 
 class JwtAuth(object):
@@ -16,10 +16,9 @@ class JwtAuth(object):
 
     def __get_user(self):
         return lambda token: {
-            self.db.query(User).filter(User.id == token['user_id']).one()
+            get_user_by_id(self.db, token['user_id'])
         }
 
     def __init__(self, config: JwtConfig, db: Session):
-        print(config)
         self.db = db
         self.config = config

@@ -5,6 +5,7 @@ from sqlalchemy import func
 from sqlalchemy.orm import Session
 from api.resources.util import get_param
 from api.security import encrypt
+from db.data_access.user import save_user
 from model.user import User
 
 
@@ -51,8 +52,8 @@ class UserResource(object):
             last_access_at=None
         )
 
-        self.db.add(user)
-        self.db.commit()
+        save_user(self.db, user)
+
         resp.status = falcon.HTTP_200
 
     def __init__(self, db: Session):

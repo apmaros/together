@@ -8,7 +8,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from api.resources.util import get_param
 from api.security import secret_is_valid
 from config.jwt_config import default_jwt_config
-from model.user import User
+from db.data_access.user import get_user_by_email
 
 
 class LoginResource(object):
@@ -27,7 +27,7 @@ class LoginResource(object):
             resp.status = falcon.HTTP_401
             return
         try:
-            user = self.db.query(User).filter(User.email == email).one()
+            user = get_user_by_email(self.db, email)
             if secret_is_valid(password, user.password):
                 payload = {
                     'user_id': str(user.id),
