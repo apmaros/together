@@ -1,19 +1,11 @@
-import uuid
 from sqlalchemy import Column, String, TIMESTAMP
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 from model.base import Base
 
 
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(
-        UUID(as_uuid=True),
-        primary_key=True,
-        default=uuid.uuid4,
-        unique=True,
-        nullable=False
-    )
     username = Column(String)
     email = Column(String)
     first_name = Column(String)
@@ -21,6 +13,9 @@ class User(Base):
     password = Column(String)
     created_at = Column(TIMESTAMP)
     last_access_at = Column(TIMESTAMP)
+
+    # Relationships
+    projects = relationship('Project')
 
     def __repr__(self):
         return "<User(username='%s', email='%s')>" % (
