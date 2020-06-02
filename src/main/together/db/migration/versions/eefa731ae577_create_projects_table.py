@@ -15,8 +15,8 @@ from sqlalchemy.dialects.postgresql import UUID
 from db.migration.defaults import (
     make_id_uuid,
     unicode_string,
-    create_at_column,
-    updated_at_column
+    make_created_at_column,
+    make_updated_at_column
 )
 
 revision = 'eefa731ae577'
@@ -41,8 +41,8 @@ def upgrade():
         sa.Column('name', unicode_string, nullable=False),
         sa.Column('description', sa.Unicode(1024), nullable=True),
         sa.Column('purpose', sa.Unicode(255), nullable=False),
-        create_at_column,
-        updated_at_column
+        make_created_at_column(),
+        make_updated_at_column()
     )
 
 

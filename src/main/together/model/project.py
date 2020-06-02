@@ -1,10 +1,7 @@
 import uuid
-
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
-
 from model.base import Base
-from model.default_columns import id_uuid
 
 
 class Project(Base):
