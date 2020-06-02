@@ -32,7 +32,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         name: apmaros/together
         snapshot: true
-        tag: latest
+        tags: "latest"
         buildargs: APP_VERSION
 
     - name: install ssh key
