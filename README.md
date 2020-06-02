@@ -1,8 +1,18 @@
 ![build and deploy](https://github.com/apmaros/together/workflows/build%20and%20deploy/badge.svg?branch=master)
 
 # Together API
+Together API is a platform that enables to connect people with common interests and
+ form communities. It is driven to increase efficiency and productivity and remove
+  clutter from communications.
 
-## Usage (development)
+  This page covers technical and non technical aspects of creating Together project
+
+## Technical
+- [Packaging Application with Docker](docs/packaging_with_docker.md)
+- [Modern Continous Integration Pipeline](docs/modern_continous_integration_pipeline.md)
+  
+# Development
+## Usage
 There are number of ways to run the application:
 
 1. **run application manually:**<br>
