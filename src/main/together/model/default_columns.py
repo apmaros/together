@@ -1,3 +1,4 @@
+import string
 import uuid
 from sqlalchemy import Column, ForeignKey
 from sqlalchemy.dialects.postgresql import UUID
@@ -11,9 +12,9 @@ id_uuid = Column(
 )
 
 
-def make_user_id_fk() -> Column:
+def make_id_fk(field: string = 'user.id') -> Column:
     return Column(
-        ForeignKey('users.id'),
+        ForeignKey(field),
         UUID(as_uuid=True),
         primary_key=True,
         default=uuid.uuid4,

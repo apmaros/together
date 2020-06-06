@@ -8,6 +8,7 @@ from sqlalchemy.dialects.postgresql import UUID
 # type
 unicode_string = Unicode(100)
 
+
 # column
 def make_id_uuid(column_name: string, is_unique=True) -> Column:
     return Column(
@@ -20,12 +21,12 @@ def make_id_uuid(column_name: string, is_unique=True) -> Column:
         )
 
 
-def make_user_id_fk_column() -> Column:
+def make_id_fk_column(column_name: string = 'users') -> Column:
     return Column(
-            'user_id',
+            f'{column_name}_id',
             UUID(as_uuid=True),
-            ForeignKey('users.id'),
-            primary_key=True,
+            ForeignKey(f'{column_name}.id'),
+            primary_key=False,
             default=uuid.uuid4,
             unique=True,
             nullable=False,

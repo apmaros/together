@@ -17,7 +17,7 @@ from db.migration.defaults import (
     unicode_string,
     make_created_at_column,
     make_updated_at_column,
-    make_user_id_fk_column
+    make_id_fk_column
 )
 
 revision = 'b55eac7ee682'
@@ -30,7 +30,7 @@ def upgrade():
     op.create_table(
         'posts',
         make_id_uuid('id'),
-        make_user_id_fk_column(),
+        make_id_fk_column(),
         Column('body', unicode_string, nullable=False),
         Column('url', unicode_string, nullable=False),
         make_created_at_column(),
